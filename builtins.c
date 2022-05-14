@@ -10,11 +10,12 @@ int (*builtin_func[])(char **) = {
 	&builtin_help;
 	&builtin_exit};
 
-/** num_builtins - function to return number of builtins
+/**
+ * num_builtins - function to return number of builtins
  *
  * Return: void
  */
-int num_builtins()
+int num_builtins(void)
 {
 	int nb;
 
