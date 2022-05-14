@@ -1,3 +1,5 @@
+#include "main.h"
+
 char *builtin_str[] = {
 	"cd",
 	"help",
