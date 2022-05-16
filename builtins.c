@@ -1,15 +1,5 @@
 #include "main.h"
 
-char *builtin_str[] = {
-	"cd",
-	"help",
-	"exit"};
-
-int (*builtin_func[])(char **) = {
-	&builtin_cd,
-	&builtin_help;
-	&builtin_exit};
-
 /**
  * num_builtins - function to return number of builtins
  *
@@ -17,6 +7,11 @@ int (*builtin_func[])(char **) = {
  */
 int num_builtins(void)
 {
+	char *builtin_str[] = {
+		"cd",
+		"help",
+		"exit"};
+
 	int nb;
 
 	nb = (sizeof(builtin_str) / sizeof(char *));
@@ -66,6 +61,11 @@ int builtin_help(char **args)
 
 	for (i = 0; i < num_builtins(); i++)
 	{
+		char *builtin_str[] = {
+			"cd",
+			"help",
+			"exit"};
+
 		printf(" %s\n", builtin_str[i]);
 	}
 
