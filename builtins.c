@@ -7,11 +7,6 @@
  */
 int num_builtins(void)
 {
-	char *builtin_str[] = {
-		"cd",
-		"help",
-		"exit"};
-
 	int nb;
 
 	nb = (sizeof(builtin_str) / sizeof(char *));
@@ -44,45 +39,14 @@ int builtin_cd(char **args)
 }
 
 /**
- * builtin_help - help function
- *
- * @args: pointer to arguments
- *
- * Return: integer(1)
- */
-
-int builtin_help()
-{
-	int i;
-
-	printf("An ALX simple shell project\n");
-	printf("Type program names and arguments, and hit enter.\n");
-	printf("The following are built in:\n");
-
-	for (i = 0; i < num_builtins(); i++)
-	{
-		char *builtin_str[] = {
-			"cd",
-			"help",
-			"exit"};
-
-		printf(" %s\n", builtin_str[i]);
-	}
-
-	printf("Use man command for more information.\n");
-
-	return (1);
-}
-
-/**
  * builtin_exit - exit function
  *
- * @args: pointer to arguments
+ * @args: list of arguments
  *
  * Return: integer(0)
  */
 
-int builtin_exit()
+int builtin_exit(char **args)
 {
 	return (0);
 }

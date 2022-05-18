@@ -10,16 +10,6 @@
 
 int sh_execute(char **args)
 {
-	char *builtin_str[] = {
-		"cd",
-		"help",
-		"exit",};
-
-	int (*builtin_func[])(char **) = {
-		&builtin_cd,
-		&builtin_help,
-		&builtin_exit};
-
 	int j;
 
 	if (args[0] == NULL)
@@ -70,7 +60,7 @@ void sh_shell(void)
  * Return: status code
  */
 
-int main()
+int main(int argc, char **argv)
 {
 	sh_shell();
 
