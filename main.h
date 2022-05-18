@@ -20,14 +20,5 @@ int sh_execute(char **args);
 char *sh_read_line(void);
 char **sh_split_line(char *line);
 void sh_shell(void);
-int main(int argc, char **argv);
-
-int (*builtin_func[])(char **) = {
-	&builtin_cd,
-	&builtin_exit};
-
-char *builtin_str[] = {
-	"cd",
-	"exit"};
-
+int main(void);
 #endif

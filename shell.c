@@ -10,6 +10,14 @@
 
 int sh_execute(char **args)
 {
+	char *builtin_str[] = {
+		"cd",
+		"exit"};
+
+	int (*builtin_func[])(char **) = {
+		&builtin_cd,
+		&builtin_exit};
+
 	int j;
 
 	if (args[0] == NULL)
@@ -53,19 +61,12 @@ void sh_shell(void)
 /**
  * main - main shell function
  *
- * @argc: arguments count
- *
- * @argv: arguments vector
- *
  * Return: status code
  */
 
-int main(int argc, char **argv)
+int main(void)
 {
-	if (argc != 0 && argv[argc] != NULL)
-	{
 	sh_shell();
-	}
 
 	return (EXIT_SUCCESS);
 }

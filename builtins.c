@@ -7,6 +7,10 @@
  */
 int num_builtins(void)
 {
+	char *builtin_str[] = {
+		"cd",
+		"exit"};
+
 	int nb;
 
 	nb = (sizeof(builtin_str) / sizeof(char *));
