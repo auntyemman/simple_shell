@@ -1,61 +1,25 @@
-#include "main.h"
+#include "hsh.h"
 
 /**
- * num_builtins - function to return number of builtins
- *
- * Return: void
- */
-int num_builtins(void)
+* handle_builtin - handles execution of builtin functions
+* @command: tokenized commands
+* @line: input read from stdin
+*
+* Return: 1 if executed, 0 if not
+*/
+int handle_builtin(char **command, char *line)
 {
-	char *builtin_str[] = {
-		"cd",
-		"exit"};
+	struct builtin builtin = {"env", "exit"};
 
-	int nb;
-
-	nb = (sizeof(builtin_str) / sizeof(char *));
-
-	return (nb);
-}
-
-/**
- * builtin_cd - function that changes directory
- *
- * @args: pointer to arguments
- *
- * Return: integer(1)
- */
-
-int builtin_cd(char **args)
-{
-	if (args[1] == NULL)
+	if (_strcmp(*command, builtin.env) == 0)
 	{
-		fprintf(stderr, "No such file or directory\n");
+		print_env();
+		return (1);
 	}
-	else
+	else if (_strcmp(*command, builtin.exit) == 0)
 	{
-		if (chdir(args[1]) != 0)
-		{
-			perror("No such file or directory\n");
-		}
+		exit_cmd(command, line);
+		return (1);
 	}
-	return (1);
-}
-
-/**
- * builtin_exit - exit function
- *
- * @args: list of arguments
- *
- * Return: integer(0)
- */
-
-int builtin_exit(char **args)
-{
-	if (strcmp("exit", args[0]) == 0)
-	{
-		return (0);
-	}
-
 	return (0);
 }

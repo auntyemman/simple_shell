@@ -1,72 +1,50 @@
-#include "main.h"
-
+#include "hsh.h"
 /**
- * sh_execute - execute program launch
- *
- * @args: Null terminated list of arguments
- *
- * Return: 1 to continue running and 0 to terminate
- */
+* main - carries out the read, execute then print output loop
+* @ac: argument count
+* @av: argument vector
+* @envp: environment vector
+*
+* Return: 0
+*/
 
-int sh_execute(char **args)
+int main(int ac, char **av, char *envp[])
 {
-	char *builtin_str[] = {
-		"cd",
-		"exit"};
-
-	int (*builtin_func[])(char **) = {
-		&builtin_cd,
-		&builtin_exit};
-
-	int j;
-
-	if (args[0] == NULL)
+	char *line = NULL, *pathcommand = NULL, *path = NULL;
+	size_t bufsize = 0;
+	ssize_t linesize = 0;
+	char **command = NULL, **paths = NULL;
+	(void)envp, (void)av;
+	if (ac < 1)
+		return (-1);
+	signal(SIGINT, handle_signal);
+	while (1)
 	{
-		return (1);
+		free_buffers(command);
+		free_buffers(paths);
+		free(pathcommand);
+		prompt_user();
+		linesize = getline(&line, &bufsize, stdin);
+		if (linesize < 0)
+			break;
+		info.ln_count++;
+		if (line[linesize - 1] == '\n')
+			line[linesize - 1] = '\0';
+		command = tokenizer(line);
+		if (command == NULL || *command == NULL || **command == '\0')
+			continue;
+		if (checker(command, line))
+			continue;
+		path = find_path();
+		paths = tokenizer(path);
+		pathcommand = test_path(paths, command[0]);
+		if (!pathcommand)
+			perror(av[0]);
+		else
+			execution(pathcommand, command);
 	}
-	for (j = 0; j < num_builtins(); j++)
-	{
-		if (strcmp(args[0], builtin_str[j]) == 0)
-		{
-			return ((*builtin_func[j])(args));
-		}
-	}
-
-	return (sh_launch(args));
-}
-
-/**
- * sh_shell - loop that gets inputs and executes functions
- *
- * Return: void
- */
-
-void sh_shell(void)
-{
-	char *line;
-	char **args;
-	int status;
-
-	do {
-		printf("$ ");
-		line = sh_read_line();
-		args = sh_split_line(line);
-		status = sh_execute(args);
-
-		free(line);
-		free(args);
-	} while (status);
-}
-
-/**
- * main - main shell function
- *
- * Return: status code
- */
-
-int main(void)
-{
-	sh_shell();
-
-	return (EXIT_SUCCESS);
+	if (linesize < 0 && flags.interactive)
+		write(STDERR_FILENO, "\n", 1);
+	free(line);
+	return (0);
 }
