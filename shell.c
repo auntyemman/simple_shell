@@ -62,7 +62,10 @@ void sh_shell(void)
 
 int main(int argc, char **argv)
 {
+	if (argc != 0 && argv[argc] != NULL)
+	{
 	sh_shell();
+	}
 
 	return (EXIT_SUCCESS);
 }

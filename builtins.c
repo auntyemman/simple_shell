@@ -48,5 +48,10 @@ int builtin_cd(char **args)
 
 int builtin_exit(char **args)
 {
+	if (strcmp("exit", args[0]) == 0)
+	{
+		return (0);
+	}
+
 	return (0);
 }
