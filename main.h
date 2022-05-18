@@ -15,12 +15,14 @@
 int builtin_cd(char **args);
 int builtin_help(char **args);
 int builtin_exit(char **args);
-int sh_num_builtins();
+int num_builtins();
 int sh_launch(char **args);
 int sh_execute(char **args);
 char *sh_read_line(void);
 char **sh_split_line(char *line);
 void sh_shell(void);
 int main(int argc, char **argv);
+int (*builtin_func[])(char **);
+char *builtin_str[];
 
 #endif
