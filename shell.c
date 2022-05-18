@@ -26,11 +26,11 @@ int sh_execute(char **args)
 	{
 		return (1);
 	}
-	for (i = 0; i < num_builtins(); i++)
+	for (j = 0; j < num_builtins(); j++)
 	{
-		if (strcmp(args[0], builtin_str[i]) == 0)
+		if (strcmp(args[0], builtin_str[j]) == 0)
 		{
-			return ((*builtin_func[i])(args));
+			return ((*builtin_func[j])(args));
 		}
 	}
 

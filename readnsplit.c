@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 
 /**
  * sh_read_line - function to readline from stdin
@@ -10,7 +10,7 @@ char *sh_read_line(void)
 {
 #define LSH_USE_STD_GETLINE
 	char *line = NULL;
-	ssize_t bufsize = 0;
+	size_t bufsize = 0;
 
 	if (getline(&line, &bufsize, stdin) == -1)
 	{

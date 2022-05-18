@@ -35,4 +35,6 @@ int sh_launch(char **args)
 
 		return (1);
 	}
+
+	return (1);
 }

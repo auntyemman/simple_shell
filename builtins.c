@@ -69,7 +69,7 @@ int builtin_help(char **args)
 		printf(" %s\n", builtin_str[i]);
 	}
 
-	printf("Use man command for more information.\n"));
+	printf("Use man command for more information.\n");
 
 	return (1);
 }
