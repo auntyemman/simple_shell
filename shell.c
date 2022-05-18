@@ -70,7 +70,7 @@ void sh_shell(void)
  * Return: status code
  */
 
-int main(int argc, char **argv)
+int main()
 {
 	sh_shell();
 

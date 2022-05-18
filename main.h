@@ -13,15 +13,15 @@
 #define LSH_USE_STD_GETLINE
 
 int builtin_cd(char **args);
-int builtin_help(char **args);
-int builtin_exit(char **args);
+int builtin_help();
+int builtin_exit();
 int num_builtins();
 int sh_launch(char **args);
 int sh_execute(char **args);
 char *sh_read_line(void);
 char **sh_split_line(char *line);
 void sh_shell(void);
-int main(int argc, char **argv);
+int main();
 
 int (*builtin_func[])(char **) = {
 	&builtin_cd,

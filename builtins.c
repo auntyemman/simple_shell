@@ -51,7 +51,7 @@ int builtin_cd(char **args)
  * Return: integer(1)
  */
 
-int builtin_help(char **args)
+int builtin_help()
 {
 	int i;
 
@@ -82,7 +82,7 @@ int builtin_help(char **args)
  * Return: integer(0)
  */
 
-int builtin_exit(char **args)
+int builtin_exit()
 {
 	return (0);
 }
