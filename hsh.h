@@ -17,7 +17,7 @@ extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
 /* handle built ins */
-int checker(char **cmd, char *buf);
+int checker(char **cmd, char *buffer);
 void prompt_user(void);
 void handle_signal(int m);
 char **tokenizer(char *line);
@@ -35,7 +35,7 @@ int _strncmp(char *s1, char *s2, int n);
 char *_strdup(char *s);
 char *_strchr(char *s, char c);
 
-void execution(char *cp, char **cmd);
+void execution(char *cp, char **command);
 char *find_path(void);
 
 /* helper function for efficient free */

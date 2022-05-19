@@ -6,7 +6,7 @@
  *@cmd:vector array of pointers to commands
  * Return: 0
  */
-void execution(char *cp, char **cmd)
+void execution(char *cp, char **command)
 {
 	pid_t child_pid;
 	int status;
@@ -17,10 +17,10 @@ void execution(char *cp, char **cmd)
 		perror(cp);
 	if (child_pid == 0)
 	{
-		execve(cp, cmd, env);
+		execve(cp, command, env);
 		perror(cp);
 		free(cp);
-		free_buffers(cmd);
+		free_buffers(command);
 		exit(98);
 	}
 	else
